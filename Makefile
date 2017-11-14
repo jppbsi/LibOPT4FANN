@@ -9,10 +9,13 @@ CC=gcc
 FLAGS=  -g -O0
 CFLAGS=''
 
-all: libfann
+all: libfann fann
 
 libfann: $(LIB)/libfann.a
 	echo "libfann.a built..."
+	
+fann: cd $(FANN); cmake .; sudo make install; cd ../;
+
 
 $(LIB)/libfann.a: \
 $(OBJ)/dev.o \
@@ -21,7 +24,7 @@ $(OBJ)/dev.o \
 $(OBJ)/dev.o \
 
 $(OBJ)/dev.o: $(SRC)/dev.c
-	$(CC) $(FLAGS) -I $(INCLUDE) -I $(OPT_DIR)/include -c $(SRC)/dev.c -o $(OBJ)/dev.o
+	$(CC) $(FLAGS) -I $(INCLUDE) -I $(OPT_DIR)/include -I $(FANN)/include -c $(SRC)/dev.c -o $(OBJ)/dev.o
 
 clean:
 	rm -f $(LIB)/lib*.a; rm -f $(OBJ)/*.o; rm -rf examples/bin/*
