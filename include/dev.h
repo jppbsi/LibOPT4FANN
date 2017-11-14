@@ -11,6 +11,8 @@ extern "C" {
 /* FANN */
 #include "fann.h"
 
+double Optimize_ANN_Architecture(Agent *a, va_list arg); /* It optimizes an ANN architecture */
+
 #ifdef __cplusplus
 }
 #endif
