@@ -8,6 +8,9 @@ extern "C" {
 /* LibOPT */
 #include "opt.h"
 
+/* FANN */
+#include "fann.h"
+
 #ifdef __cplusplus
 }
 #endif
